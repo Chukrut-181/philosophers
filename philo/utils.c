@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:46:26 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/23 13:46:45 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:17:51 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,18 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	return (sign * result);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*p;
+
+	p = b;
+	while (0 < len)
+	{
+		*p = (unsigned char)c;
+		p++;
+		len--;
+	}
+	return (b);
 }

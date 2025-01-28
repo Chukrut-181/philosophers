@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/28 15:45:20 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:44:41 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,27 @@
 
 # define MAXPHILOS 250
 
-typedef struct philo
+//	PHILOSOPHERS DATA
+typedef struct s_philosopher
 {
-	int	number;
-	int	ttdie;
-	int	tteat;
-	int	ttsleep;
-	int	must_eat;
+	pthread_t		thread;
+	int				id;
+	size_t			time_of_lm;
+	int				meals_eaten;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*left_fork;
+	int				isdead;
 }	t_philo;
+
+//	COMMON DATA
+typedef struct s_life
+{
+	int			number_of_philos;
+	int			ttdie;
+	int			tteat;
+	int			ttsleep;
+	int			must_eat;
+}	t_life;
 
 //	MAIN
 int		main(int argc, char **argv);
@@ -39,6 +52,10 @@ int		ft_check_args(int argc, char **argv);
 
 //	UTILS
 int		ft_atoi(const char *str);
+void	*ft_memset(void *b, int c, size_t len);
+
+//	TIME
+ssize_t	ft_get_current_time(void);
 
 //	(DEBUG AND TEST FTs TO BE REMOVED)
 void	ft_checkprinter(int argc, int **array);
