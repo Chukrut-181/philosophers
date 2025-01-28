@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/23 15:25:26 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/28 10:43:05 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ int		main(int argc, char **argv);
 
 //	PARSE
 int		**ft_parse_argv(int argc, char **argv);
+int		ft_check_argc(int argc);
 
 //	UTILS
 int		ft_atoi(const char *str);
 
-//	(DEBUG FTs TO BE REMOVED)
+//	(DEBUG AND TEST FTs TO BE REMOVED)
 void	ft_checkprinter(int argc, int **array);
+void	*routine(void *arg);
 
 #endif
