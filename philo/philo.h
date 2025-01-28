@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/28 10:43:05 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:45:20 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+
+# define MAXPHILOS 250
 
 typedef struct philo
 {
@@ -33,8 +35,7 @@ typedef struct philo
 int		main(int argc, char **argv);
 
 //	PARSE
-int		**ft_parse_argv(int argc, char **argv);
-int		ft_check_argc(int argc);
+int		ft_check_args(int argc, char **argv);
 
 //	UTILS
 int		ft_atoi(const char *str);
