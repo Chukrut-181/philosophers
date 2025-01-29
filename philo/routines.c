@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:19:18 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/29 15:37:44 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:48:06 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,8 @@
 void	*ft_philo_routine(void *philo)
 {
 	t_philo	*guest;
-	guest = (t_philo *)(philo);
-	
 
-//	ESTABLISH ROUTINES
-	//	EAT
+	guest = (t_philo *)(philo);
 	ft_sleep(guest);
 	ft_think(guest);
 	return (NULL);

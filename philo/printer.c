@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:21:34 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/29 15:38:24 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:48:20 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_printer(t_philo *philo, int k)
 {
 	ssize_t	time;
-	
+
 	pthread_mutex_lock(&philo->life->print);
 	time = ft_get_current_time() - philo->life->start_time;
 	if (k == 2)

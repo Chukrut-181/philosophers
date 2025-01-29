@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:51 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/29 15:39:13 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:46:35 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	ft_initlife(int argc, char **argv, t_life *life)
 		life->must_eat = ft_atoi(argv[5]);
 }
 
-void	ft_initphilos(char **av, t_philo *philo, pthread_mutex_t *fork, t_life *life)
+void	ft_initphilos(char **av, t_philo *philo,
+	pthread_mutex_t *fork, t_life *life)
 {
 	int	guests;
 	int	i;
