@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:51 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/28 17:05:16 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:11:40 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_initlife(int argc, char **argv, t_life *life)
 		life->must_eat = ft_atoi(argv[5]);
 }
 
-void	ft_initphilos(int ac, char **av, t_philo *philo, pthread_mutex_t *fork)
+void	ft_initphilos(char **av, t_philo *philo, pthread_mutex_t *fork)
 {
 	int	guests;
 	int	i;
@@ -33,6 +33,11 @@ void	ft_initphilos(int ac, char **av, t_philo *philo, pthread_mutex_t *fork)
 	{
 		philo[i].id = i;
 		philo[i].time_of_lm = ft_get_current_time();
+		philo[i].right_fork = &fork[i];
+		if (i == 0)
+			philo[i].right_fork = &fork[guests - 1];
+		else
+			philo[i].right_fork = &fork[i - 1];
 		i++;
 	}
 }
@@ -47,7 +52,7 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_memset(&philo, 0, sizeof(t_philo));
 	ft_memset(&fork, 0, sizeof(t_life));
-	ft_initphilos(argc, argv, philo, fork);
+	ft_initphilos(argv, philo, fork);
 	ft_initlife(argc, argv, &life);
 	return (0);
 }
