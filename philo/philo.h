@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/29 13:48:31 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:38:41 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_life
 
 //	MAIN
 int		main(int argc, char **argv);
-void	ft_initphilos(char **av, t_philo *philo, pthread_mutex_t *fork);
+void	ft_initphilos(char **av, t_philo *philo, pthread_mutex_t *fork, t_life *life);
 void	ft_initlife(int argc, char **argv, t_life *life);
 void	ft_init_threads(t_philo *philo, t_life *life);
 
@@ -67,6 +67,7 @@ int		ft_check_args(int argc, char **argv);
 //void	*ft_waiter_routine(void *philo);
 void	*ft_philo_routine(void *philo);
 void	ft_sleep(t_philo *philo);
+void	ft_think(t_philo *philo);
 
 //	UTILS
 int		ft_atoi(const char *str);
