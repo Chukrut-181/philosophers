@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/29 10:12:22 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:27:11 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_philosopher
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
 	int				isdead;
+	t_life			*life;
 }	t_philo;
 
 //	COMMON DATA
@@ -51,6 +52,10 @@ void	ft_initlife(int argc, char **argv, t_life *life);
 
 //	PARSE
 int		ft_check_args(int argc, char **argv);
+
+//	ROUTINES
+void	*ft_waiter_routine(void *philo);
+void	*ft_philo_routine(void *philo);
 
 //	UTILS
 int		ft_atoi(const char *str);

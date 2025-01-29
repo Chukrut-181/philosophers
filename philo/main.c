@@ -6,11 +6,25 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:51 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/29 10:11:40 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:48:52 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	ft_init_threads(t_philo *philo, t_life *life, pthread_mutex_t *fork)
+{
+	pthread_t	waiter;
+	int			i;
+	
+	pthread_create(&waiter, NULL, &ft_waiter_routine, philo);
+	while (i < life->number_of_philos)
+	{
+		pthread_create(&philo->thread, NULL, &ft_philo_routine, &philo[i]);
+		i++;
+	}
+	
+}
 
 void	ft_initlife(int argc, char **argv, t_life *life)
 {
