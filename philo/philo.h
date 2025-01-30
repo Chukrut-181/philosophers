@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/30 11:04:55 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:40:18 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_life
 	size_t			ttsleep;
 	size_t			must_eat;
 	pthread_mutex_t	print;
+	pthread_mutex_t	eat;
 }	t_life;
 
 //	MAIN

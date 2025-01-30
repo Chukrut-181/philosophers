@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:51 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/30 11:18:11 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:40:39 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_initlife(int argc, char **argv, t_life *life)
 	life->tteat = ft_atoi(argv[3]);
 	life->ttsleep = ft_atoi(argv[4]);
 	pthread_mutex_init(&life->print, NULL);
+	pthread_mutex_init(&life->eat, NULL);
 	if (argc == 6)
 		life->must_eat = ft_atoi(argv[5]);
 }
