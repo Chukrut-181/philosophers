@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/29 15:47:32 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:44:42 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define EATING 3
 # define SLEEPING 4
 # define THINKING 5
+# define FINISHED 6
+# define DEAD 7
 
 //	PHILOSOPHERS DATA
 typedef struct s_philosopher
@@ -56,6 +58,7 @@ typedef struct s_life
 
 //	MAIN
 int		main(int argc, char **argv);
+void	ft_initforks(pthread_mutex_t *forks);
 void	ft_initphilos(char **av, t_philo *philo,
 			pthread_mutex_t *fork, t_life *life);
 void	ft_initlife(int argc, char **argv, t_life *life);
@@ -69,6 +72,7 @@ int		ft_check_args(int argc, char **argv);
 void	*ft_philo_routine(void *philo);
 void	ft_sleep(t_philo *philo);
 void	ft_think(t_philo *philo);
+void	ft_eat(t_philo *philo);
 
 //	UTILS
 int		ft_atoi(const char *str);
@@ -81,8 +85,10 @@ int		ft_usleep(size_t milliseconds);
 // 	PRINTER
 void	ft_printer(t_philo *philo, int k);
 
+//	DESTROY
+void	ft_destroy_mutexes(t_life *life, pthread_mutex_t *forks);
+
 //	(DEBUG AND TEST FTs TO BE REMOVED)
 void	ft_checkprinter(int argc, int **array);
-void	*routine(void *arg);
 
 #endif

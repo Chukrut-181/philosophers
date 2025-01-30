@@ -11,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 SANITIZE_FLAGS = -fsanitize=address -g
 
 # Source files
-SRCS = main.c parse.c utils.c routines.c time.c printer.c
+SRCS = main.c parse.c utils.c routines.c time.c printer.c destroy.c
 
 # Object files directory
 OBJS_DIR = objects

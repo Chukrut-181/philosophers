@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:51 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/29 15:46:35 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:36:34 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,30 @@ void	ft_initphilos(char **av, t_philo *philo,
 	i = 0;
 	while (i < guests)
 	{
-		philo[i].id = i + 1;
+		philo[i].id = (i + 1);
 		philo[i].time_of_lm = ft_get_current_time();
 		philo[i].right_fork = &fork[i];
 		if (i == 0)
-			philo[i].right_fork = &fork[guests - 1];
+		{
+			philo[i].left_fork = &fork[guests - 1];
+		}
 		else
-			philo[i].right_fork = &fork[i - 1];
+		{
+			philo[i].left_fork = &fork[i - 1];
+		}
 		philo[i].life = life;
+		i++;
+	}
+}
+
+void	ft_initforks(pthread_mutex_t *forks)
+{
+	int	i;
+
+	i = 0;
+	while (i < MAXPHILOS)
+	{
+		pthread_mutex_init(&forks[i], NULL);
 		i++;
 	}
 }
@@ -71,16 +87,17 @@ int	main(int argc, char **argv)
 {
 	t_philo			philo[MAXPHILOS];
 	t_life			life;
-	pthread_mutex_t	fork[MAXPHILOS];
+	pthread_mutex_t	forks[MAXPHILOS];
 
 	if (ft_check_args(argc, argv))
 		return (1);
 	ft_memset(&philo, 0, sizeof(t_philo));
-	ft_memset(&fork, 0, sizeof(t_life));
-	ft_initphilos(argv, philo, fork, &life);
+	ft_memset(&forks, 0, sizeof(forks));
+	ft_initforks(forks);
+	ft_initphilos(argv, philo, forks, &life);
 	ft_initlife(argc, argv, &life);
 	ft_init_threads(philo, &life);
-	pthread_mutex_destroy(&life.print);
+	ft_destroy_mutexes(&life, forks);
 	return (0);
 }
 
