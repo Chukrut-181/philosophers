@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/30 10:44:42 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:04:55 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define EATING 3
 # define SLEEPING 4
 # define THINKING 5
-# define FINISHED 6
-# define DEAD 7
+# define PHILOSOPHING 6
+# define FINISHED 7
+# define DEAD 8
 
 //	PHILOSOPHERS DATA
 typedef struct s_philosopher
@@ -40,7 +41,7 @@ typedef struct s_philosopher
 	int				meals_eaten;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
-	int				isdead;
+	int				philo_status;
 	struct s_life	*life;
 }	t_philo;
 
@@ -48,6 +49,7 @@ typedef struct s_philosopher
 typedef struct s_life
 {
 	int				number_of_philos;
+	int				life_status;
 	size_t			start_time;
 	size_t			ttdie;
 	size_t			tteat;

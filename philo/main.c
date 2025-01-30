@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:51 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/30 10:36:34 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/30 11:18:11 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_init_threads(t_philo *philo, t_life *life)
 void	ft_initlife(int argc, char **argv, t_life *life)
 {
 	life->number_of_philos = ft_atoi(argv[1]);
+	life->life_status = CONTINUE;
 	life->start_time = ft_get_current_time();
 	life->ttdie = ft_atoi(argv[2]);
 	life->tteat = ft_atoi(argv[3]);
@@ -66,6 +67,7 @@ void	ft_initphilos(char **av, t_philo *philo,
 		{
 			philo[i].left_fork = &fork[i - 1];
 		}
+		philo[i].philo_status = PHILOSOPHING;
 		philo[i].life = life;
 		i++;
 	}
