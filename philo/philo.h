@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/30 15:40:18 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:01:38 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_life
 	size_t			ttdie;
 	size_t			tteat;
 	size_t			ttsleep;
-	size_t			must_eat;
+	int				must_eat;
 	pthread_mutex_t	print;
 	pthread_mutex_t	eat;
 }	t_life;
@@ -70,16 +70,21 @@ void	ft_init_threads(t_philo *philo, t_life *life);
 //	PARSE
 int		ft_check_args(int argc, char **argv);
 
-//	ROUTINES
-//void	*ft_waiter_routine(void *philo);
+//	GUEST ROUTINES
 void	*ft_philo_routine(void *philo);
 void	ft_sleep(t_philo *philo);
 void	ft_think(t_philo *philo);
 void	ft_eat(t_philo *philo);
 
+//	WAITER ROUTINES
+void	*ft_waiter_routine(void *philo);
+int		ft_check_for_corpses(t_philo *philo, t_life *life);
+int		ft_check_for_end(t_philo *philo, t_life *life);
+
 //	UTILS
 int		ft_atoi(const char *str);
 void	*ft_memset(void *b, int c, size_t len);
+void	ft_dinnerforone(t_philo *philo);
 
 //	TIME
 ssize_t	ft_get_current_time(void);

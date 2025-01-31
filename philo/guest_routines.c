@@ -1,45 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routines.c                                         :+:      :+:    :+:   */
+/*   guest_routines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:19:18 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/30 15:42:01 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/31 13:16:02 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/* void	*ft_waiter_routine(void *philo)
-{
-// CHECK ALL ALIVE -- CHECK NOT FINISHED
-
-	t_philo	*guest;
-	
-	guest = (t_philo *)philo;
-	
-	return (NULL);
-} */
-
 void	*ft_philo_routine(void *philo)
 {
 	t_philo	*guest;
+	t_life *life;
 
 	guest = (t_philo *)philo;
+	life = guest->life;
 	if (guest->id % 2 == 0)
 		ft_usleep(100);
-	while (guest->philo_status == PHILOSOPHING
-		&& guest->life->life_status == CONTINUE)
+	while (life->life_status == CONTINUE && guest->philo_status == PHILOSOPHING)
 	{
-		if ((ft_get_current_time() - guest->time_of_lm) > guest->life->tteat)
-		{
-			guest->life->life_status = STOP;
-			ft_usleep(500);
-			ft_printer(guest, DEAD);
-			break ;
-		}
 		ft_eat(guest);
 		ft_sleep(guest);
 		ft_think(guest);

@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:46:26 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/28 16:17:51 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/31 11:55:32 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,11 @@ void	*ft_memset(void *b, int c, size_t len)
 		len--;
 	}
 	return (b);
+}
+
+void	ft_dinnerforone(t_philo *philo)
+{
+	ft_printer(philo, GOTFORK);
+	ft_usleep(philo->life->ttdie);
+	ft_printer(philo, DEAD);
 }

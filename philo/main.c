@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:51 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/30 15:40:39 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:20:21 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	ft_init_threads(t_philo *philo, t_life *life)
 {
-	//pthread_t	waiter;
+	pthread_t	waiter;
 	int			i;
 
 	i = 0;
-	//pthread_create(&waiter, NULL, &ft_waiter_routine, philo);
+	pthread_create(&waiter, NULL, &ft_waiter_routine, philo);
 	while (i < life->number_of_philos)
 	{
 		pthread_create(&philo[i].thread, NULL, &ft_philo_routine, &philo[i]);
 		i++;
 	}
-	//pthread_join(waiter, NULL);
+	pthread_join(waiter, NULL);
 	i = 0;
 	while (i < life->number_of_philos)
 	{
@@ -99,7 +99,10 @@ int	main(int argc, char **argv)
 	ft_initforks(forks);
 	ft_initphilos(argv, philo, forks, &life);
 	ft_initlife(argc, argv, &life);
-	ft_init_threads(philo, &life);
+	if (life.number_of_philos == 1)
+		ft_dinnerforone(&philo[0]);
+	else
+		ft_init_threads(philo, &life);
 	ft_destroy_mutexes(&life, forks);
 	return (0);
 }
