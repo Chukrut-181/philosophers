@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:17:44 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/31 13:07:26 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:56:34 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ int	ft_check_for_corpses(t_philo *philo, t_life *life)
 	i = 0;
 	while (i < life->number_of_philos)
 	{
-		if (ft_get_current_time() - philo->time_of_lm > life->ttdie)
+		if ((ft_get_current_time() - philo[i].time_of_lm) > life->ttdie)
 		{
-			pthread_mutex_lock(&life->eat);
+			pthread_mutex_lock(&life->waiter);
 			life->life_status = STOP;
-			pthread_mutex_unlock(&life->eat);
-			ft_printer(philo, DEAD);
+			philo[i].philo_status = DEAD;
+			pthread_mutex_unlock(&life->waiter);
+			ft_printer(&philo[i], DEAD);
 			return (1);
 		}
 		i++;
@@ -55,9 +56,7 @@ int	ft_check_for_end(t_philo *philo, t_life *life)
 	i = 0;
 	while (i < life->number_of_philos)
 	{
-		if (philo->meals_eaten >= life->must_eat)
-			philo->philo_status = FINISHED;
-		else if (philo->philo_status == PHILOSOPHING)
+		if (philo[i].philo_status == PHILOSOPHING)
 			return (0);
 		i++;
 	}

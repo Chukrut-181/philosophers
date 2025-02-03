@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/01/31 13:01:38 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 10:36:23 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ typedef struct s_life
 	int				must_eat;
 	pthread_mutex_t	print;
 	pthread_mutex_t	eat;
+	pthread_mutex_t	waiter;
 }	t_life;
 
 //	MAIN
 int		main(int argc, char **argv);
-void	ft_initforks(pthread_mutex_t *forks);
-void	ft_initphilos(char **av, t_philo *philo,
-			pthread_mutex_t *fork, t_life *life);
-void	ft_initlife(int argc, char **argv, t_life *life);
+void	ft_init_forks(pthread_mutex_t *forks, t_life *life);
+void	ft_init_philos(t_philo *philo, pthread_mutex_t *fork, t_life *life);
+void	ft_init_life(int argc, char **argv, t_life *life);
 void	ft_init_threads(t_philo *philo, t_life *life);
 
 //	PARSE
@@ -74,7 +74,7 @@ int		ft_check_args(int argc, char **argv);
 void	*ft_philo_routine(void *philo);
 void	ft_sleep(t_philo *philo);
 void	ft_think(t_philo *philo);
-void	ft_eat(t_philo *philo);
+void	ft_eat(t_philo *philo, t_life *life);
 
 //	WAITER ROUTINES
 void	*ft_waiter_routine(void *philo);
