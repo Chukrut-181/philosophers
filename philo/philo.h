@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 10:36:23 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:16:45 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_philosopher
 	int				meals_eaten;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
-	int				philo_status;
+	int				status;
 	struct s_life	*life;
 }	t_philo;
 
@@ -49,7 +49,7 @@ typedef struct s_philosopher
 typedef struct s_life
 {
 	int				number_of_philos;
-	int				life_status;
+	int				status;
 	size_t			start_time;
 	size_t			ttdie;
 	size_t			tteat;
@@ -87,7 +87,7 @@ void	*ft_memset(void *b, int c, size_t len);
 void	ft_dinnerforone(t_philo *philo);
 
 //	TIME
-ssize_t	ft_get_current_time(void);
+size_t	ft_get_current_time(void);
 int		ft_usleep(size_t milliseconds);
 
 // 	PRINTER
