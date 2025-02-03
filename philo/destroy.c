@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:29:15 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 15:07:30 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:10:42 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_destroy_mutexes(t_life *life, pthread_mutex_t *forks)
 	}
 	pthread_mutex_destroy(&life->print);
 	pthread_mutex_destroy(&life->eat);
+	pthread_mutex_destroy(&life->waiter);
 }
 
 int	ft_end_condition(t_philo *philo)

@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:11:24 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 15:04:34 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:09:46 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,5 @@ void	ft_printer(t_philo *philo, int k);
 //	DESTROY
 void	ft_destroy_mutexes(t_life *life, pthread_mutex_t *forks);
 int		ft_end_condition(t_philo *philo);
-
-//	(DEBUG AND TEST FTs TO BE REMOVED)
-void	ft_checkprinter(int argc, int **array);
 
 #endif
