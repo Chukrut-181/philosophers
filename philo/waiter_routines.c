@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:17:44 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 13:20:35 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:26:16 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int	ft_check_for_end(t_philo *philo, t_life *life)
 		else
 			i++;
 	}
-	printf("All philosophers ate %i times\n", life->must_eat);
+	printf("\033[91mEnd: All guests ate %i times\033[0m\n", life->must_eat);
 	return (1);
 }

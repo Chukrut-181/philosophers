@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:19:18 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 13:17:48 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:20:54 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_eat(t_philo *philo, t_life *life)
 	pthread_mutex_lock(philo->left_fork);
 	ft_printer(philo, GOTFORK);
 	ft_printer(philo, EATING);
-	philo->status = EATING;
 	pthread_mutex_lock(&life->eat);
 	philo->meals_eaten++;
 	philo->time_of_lm = ft_get_current_time();
@@ -62,7 +61,6 @@ void	ft_eat(t_philo *philo, t_life *life)
 		philo->status = FINISHED;
 	pthread_mutex_unlock(&life->eat);
 	ft_usleep(life->tteat);
-	philo->status = PHILOSOPHING;
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
 }
