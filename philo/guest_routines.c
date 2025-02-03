@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 10:19:18 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 14:20:54 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:00:27 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,10 @@ void	*ft_philo_routine(void *philo)
 	life = guest->life;
 	if (guest->id % 2 == 0)
 		ft_usleep(10);
-	while (1)
+	while (ft_end_condition(philo) == 0)
 	{
-		if (life->status != CONTINUE || guest->status != PHILOSOPHING)
-			break ;
 		ft_eat(guest, life);
-		if (life->status != CONTINUE || guest->status != PHILOSOPHING)
-			break ;
 		ft_sleep(guest);
-		if (life->status != CONTINUE || guest->status != PHILOSOPHING)
-			break ;
 		ft_think(guest);
 	}
 	return (NULL);

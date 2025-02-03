@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 12:17:44 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 14:26:16 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:06:22 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ int	ft_check_for_end(t_philo *philo, t_life *life)
 		else
 			i++;
 	}
+	pthread_mutex_lock(&life->waiter);
+	life->status = STOP;
+	pthread_mutex_unlock(&life->waiter);
 	printf("\033[91mEnd: All guests ate %i times\033[0m\n", life->must_eat);
 	return (1);
 }
