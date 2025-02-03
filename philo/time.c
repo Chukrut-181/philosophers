@@ -6,7 +6,7 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 15:12:22 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 15:34:49 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:52:11 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_usleep(size_t milliseconds)
 	begin_time = ft_get_current_time();
 	while ((ft_get_current_time() - begin_time) < milliseconds)
 	{
-		usleep(500);
+		usleep(20000);
 	}
 	return (0);
 }
