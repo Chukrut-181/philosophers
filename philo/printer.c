@@ -6,12 +6,26 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:21:34 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 14:25:26 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:31:40 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/* ************************************************************************* */
+/*  ft_printer                                                               */
+/*                                                                           */
+/*  Prints the status of a philosopher (e.g., taken a fork, eating, sleeping,*/
+/*  thinking, or dead) to the console. The time of the event is printed, and */
+/*  the printing is synchronized using a mutex to avoid race conditions.     */
+/*                                                                           */
+/*  philo: Pointer to the philosopher structure, used to access their        */
+/*         ID and life-related information.                                  */
+/*  k: The status to print, representing different philosopher actions like  */
+/*     taking a fork, eating, sleeping, thinking, or being dead.             */
+/*                                                                           */
+/*  Returns: None.                                                           */
+/* ************************************************************************* */
 void	ft_printer(t_philo *philo, int k)
 {
 	size_t	time;

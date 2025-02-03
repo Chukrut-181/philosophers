@@ -6,12 +6,24 @@
 /*   By: igchurru <igchurru@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:17:51 by igchurru          #+#    #+#             */
-/*   Updated: 2025/02/03 13:18:05 by igchurru         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:33:12 by igchurru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+/* ************************************************************************* */
+/*  ft_init_threads                                                          */
+/*                                                                           */
+/*  Initializes the philosopher threads and the waiter thread. It creates    */
+/*  the threads for each philosopher and starts their routines. It also      */
+/*  creates a separate waiter thread and waits for all threads to finish.    */
+/*                                                                           */
+/*  philo: Array of philosopher structures, each containing a thread.        */
+/*  life: Pointer to the 't_life' structure, containing simulation details.  */
+/*                                                                           */
+/*  Returns: None.                                                           */
+/* ************************************************************************* */
 void	ft_init_threads(t_philo *philo, t_life *life)
 {
 	pthread_t	waiter;
@@ -33,6 +45,21 @@ void	ft_init_threads(t_philo *philo, t_life *life)
 	}
 }
 
+/* ************************************************************************* */
+/*  ft_init_life                                                             */
+/*                                                                           */
+/*  Initializes the life structure for the philosopher simulation. It sets   */
+/*  up the number of philosophers, their initial status, and the time values */
+/*  for dying, eating, and sleeping. It also initializes necessary mutexes.  */
+/*  If the argument count is 6, it sets the number of meals each philosopher */
+/*  must eat.                                                                */
+/*                                                                           */
+/*  argc: Number of arguments passed to the program.                         */
+/*  argv: Array of argument strings.                                         */
+/*  life: Pointer to the 't_life' structure to be initialized.               */
+/*                                                                           */
+/*  Returns: None.                                                           */
+/* ************************************************************************* */
 void	ft_init_life(int argc, char **argv, t_life *life)
 {
 	life->number_of_philos = ft_atoi(argv[1]);
@@ -48,6 +75,19 @@ void	ft_init_life(int argc, char **argv, t_life *life)
 		life->must_eat = ft_atoi(argv[5]);
 }
 
+/* ************************************************************************* */
+/*  ft_init_philos                                                           */
+/*                                                                           */
+/*  Initializes the philosophers by setting their IDs, the time of the last  */
+/*  meal, the left and right forks, and their initial status. It also links  */
+/*  each philosopher to the life structure.                                  */
+/*                                                                           */
+/*  philo: Array of philosopher structures to be initialized.                */
+/*  fork: Array of mutexes representing the forks used by philosophers.      */
+/*  life: Pointer to the 't_life' structure, shared among all philosophers.  */
+/*                                                                           */
+/*  Returns: None.                                                           */
+/* ************************************************************************* */
 void	ft_init_philos(t_philo *philo, pthread_mutex_t *fork, t_life *life)
 {
 	int	i;
@@ -72,6 +112,18 @@ void	ft_init_philos(t_philo *philo, pthread_mutex_t *fork, t_life *life)
 	}
 }
 
+/* ************************************************************************* */
+/*  ft_init_forks                                                            */
+/*                                                                           */
+/*  Initializes the mutexes for each fork in the simulation. It loops through*/
+/*  the number of philosophers and initializes a mutex for each fork.        */
+/*                                                                           */
+/*  forks: Array of mutexes representing the forks.                          */
+/*  life: Pointer to the 't_life' structure, used to determine the number    */
+/*        of philosophers.                                                   */
+/*                                                                           */
+/*  Returns: None.                                                           */
+/* ************************************************************************* */
 void	ft_init_forks(pthread_mutex_t *forks, t_life *life)
 {
 	int	i;
@@ -84,6 +136,19 @@ void	ft_init_forks(pthread_mutex_t *forks, t_life *life)
 	}
 }
 
+/* ************************************************************************* */
+/*  main                                                                     */
+/*                                                                           */
+/*  Entry point of the philosophers program. It initializes philosophers,    */
+/*  forks, and the simulation, then starts the philosopher threads. If only  */
+/*  one philosopher is present, it runs a special case function. Finally,    */
+/*  it cleans up all allocated resources.                                    */
+/*                                                                           */
+/*  argc: Number of arguments passed to the program.                         */
+/*  argv: Array of argument strings.                                         */
+/*                                                                           */
+/*  Returns: 0 on success, 1 if argument validation fails.                   */
+/* ************************************************************************* */
 int	main(int argc, char **argv)
 {
 	t_philo			philo[MAXPHILOS];
@@ -104,17 +169,3 @@ int	main(int argc, char **argv)
 	ft_destroy_mutexes(&life, forks);
 	return (0);
 }
-
-/* void	ft_checkprinter(int argc, int **array)
-{
-	int	i;
-
-	i = 0;
-	while (i < (argc - 1))
-	{
-		printf("int array[%d] = %d\n", i, *array[i]);
-		free(array[i]);
-		i++;
-	}
-	free(array);
-} */
